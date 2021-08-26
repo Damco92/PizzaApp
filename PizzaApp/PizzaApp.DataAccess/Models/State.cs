@@ -12,7 +12,7 @@ namespace PizzaApp.DataAccess.Models
             TransitionsStateNavigation = new HashSet<Transition>();
         }
 
-        public int StateTypeId { get; set; }
+        public StateTypeId StateTypeId { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
 

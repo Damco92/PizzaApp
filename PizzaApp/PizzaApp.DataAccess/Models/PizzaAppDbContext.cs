@@ -1,6 +1,6 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
+using System.Linq;
 
 namespace PizzaApp.DataAccess.Models
 {
@@ -52,6 +52,19 @@ namespace PizzaApp.DataAccess.Models
 
             modelBuilder.Entity<PizzaSize>(entity =>
             {
+                entity.Property(x => x.PizzaSizeId)
+                .HasConversion<int>();
+
+                entity.
+                   HasData
+                       (
+                       Enum.GetValues(typeof(PizzaSizeId))
+                       .Cast<PizzaSizeId>().Select(x => new PizzaSize
+                       {
+                           PizzaSizeId = x,
+                           Size = x.ToString()
+                       }));
+
                 entity.Property(e => e.Size)
                     .IsRequired()
                     .HasColumnName("PizzaSize")
@@ -62,6 +75,20 @@ namespace PizzaApp.DataAccess.Models
 
             modelBuilder.Entity<PizzaType>(entity =>
             {
+
+                entity.Property(x => x.PizzaTypeId)
+                    .HasConversion<int>();
+
+                entity.
+                    HasData
+                        (
+                        Enum.GetValues(typeof(PizzaTypeId))
+                        .Cast<PizzaTypeId>().Select(x => new PizzaType
+                        {
+                            PizzaTypeId = x,
+                            TypeOfPizza = x.ToString()
+                        }));
+
                 entity.Property(e => e.TypeOfPizza)
                     .IsRequired()
                     .HasColumnName("PizzaType")
@@ -87,6 +114,9 @@ namespace PizzaApp.DataAccess.Models
 
             modelBuilder.Entity<State>(entity =>
             {
+                entity.Property(e => e.StateTypeId)
+                        .HasConversion<int>();
+
                 entity.Property(e => e.Description).HasMaxLength(200);
 
                 entity.Property(e => e.Name).HasMaxLength(50);
@@ -100,6 +130,19 @@ namespace PizzaApp.DataAccess.Models
 
             modelBuilder.Entity<StateType>(entity =>
             {
+                entity.Property(x => x.StateTypeId).HasConversion<int>();
+
+                
+                entity.HasData(
+                Enum.GetValues(typeof(StateTypeId))
+                    .Cast<StateTypeId>()
+                    .Select(e => new StateType()
+                    {
+                        StateTypeId = e,
+                        Type = e.ToString()
+                    })
+            );
+
                 entity.Property(e => e.Type)
                     .IsRequired()
                     .HasColumnName("StateType")

@@ -10,8 +10,8 @@ namespace PizzaApp.DataAccess.Models
             Orders = new HashSet<Order>();
         }
 
-        public int PizzaTypeId { get; set; }
-        public int PizzaSizeId { get; set; }
+        public PizzaTypeId PizzaTypeId { get; set; }
+        public PizzaSizeId PizzaSizeId { get; set; }
 
         public virtual PizzaSize PizzaSize { get; set; }
         public virtual PizzaType PizzaType { get; set; }

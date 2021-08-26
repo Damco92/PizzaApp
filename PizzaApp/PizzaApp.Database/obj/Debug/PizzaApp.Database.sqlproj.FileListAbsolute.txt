@@ -3,3 +3,4 @@ C:\Users\admin.dst\source\repos\PizzaApp\PizzaApp.Database\bin\Debug\PizzaApp.Da
 C:\Users\admin.dst\source\repos\PizzaApp\PizzaApp.Database\bin\Debug\PizzaApp.Database.pdb
 C:\Users\admin.dst\source\repos\PizzaApp\PizzaApp.Database\obj\Debug\PizzaApp.Database.dll
 C:\Users\admin.dst\source\repos\PizzaApp\PizzaApp.Database\obj\Debug\PizzaApp.Database.pdb
+C:\Users\admin.dst\source\repos\PizzaApp\PizzaApp.Database\obj\Debug\PizzaApp.Database.sqlproj.AssemblyReference.cache
