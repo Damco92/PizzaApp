@@ -1,0 +1,29 @@
+﻿** Highlights
+     Tables that will be rebuilt
+       None
+     Clustered indexes that will be dropped
+       None
+     Clustered indexes that will be created
+       None
+     Possible data issues
+       None
+
+** User actions
+     Create
+       [dbo].[OrderEvent] (Table)
+       [dbo].[Orders] (Table)
+       [dbo].[OrderState] (Table)
+       [dbo].[OrderTransitions] (Table)
+       [dbo].[Pizzas] (Table)
+       [dbo].[PizzaSize] (Table)
+       [dbo].[PizzaType] (Table)
+       [dbo].[FK_pizza] (Foreign Key)
+       [dbo].[FK_order_state] (Foreign Key)
+       [dbo].[FK_transition] (Foreign Key)
+       Foreign Key: unnamed constraint on [dbo].[OrderTransitions] (Foreign Key)
+       Foreign Key: unnamed constraint on [dbo].[OrderTransitions] (Foreign Key)
+       Foreign Key: unnamed constraint on [dbo].[OrderTransitions] (Foreign Key)
+       [dbo].[FK_pizza_type] (Foreign Key)
+       [dbo].[FK_pizza_size] (Foreign Key)
+
+** Supporting actions

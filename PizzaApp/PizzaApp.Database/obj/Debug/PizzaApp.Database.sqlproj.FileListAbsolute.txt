@@ -1,0 +1,5 @@
+C:\Users\admin.dst\source\repos\PizzaApp\PizzaApp.Database\bin\Debug\PizzaApp.Database.dacpac
+C:\Users\admin.dst\source\repos\PizzaApp\PizzaApp.Database\bin\Debug\PizzaApp.Database.dll
+C:\Users\admin.dst\source\repos\PizzaApp\PizzaApp.Database\bin\Debug\PizzaApp.Database.pdb
+C:\Users\admin.dst\source\repos\PizzaApp\PizzaApp.Database\obj\Debug\PizzaApp.Database.dll
+C:\Users\admin.dst\source\repos\PizzaApp\PizzaApp.Database\obj\Debug\PizzaApp.Database.pdb

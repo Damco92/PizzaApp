@@ -1,0 +1,5 @@
+﻿CREATE TABLE [dbo].[PizzaType]
+(
+	[Id] INT NOT NULL PRIMARY KEY IDENTITY(1,1), 
+    [PizzaType] CHAR(10) NOT NULL
+)

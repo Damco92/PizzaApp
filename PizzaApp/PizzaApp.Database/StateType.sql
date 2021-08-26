@@ -1,0 +1,5 @@
+﻿CREATE TABLE [dbo].[StateType]
+(
+	[Id] INT NOT NULL PRIMARY KEY IDENTITY(1,1),
+	[StateType] CHAR(10) NOT NULL
+)

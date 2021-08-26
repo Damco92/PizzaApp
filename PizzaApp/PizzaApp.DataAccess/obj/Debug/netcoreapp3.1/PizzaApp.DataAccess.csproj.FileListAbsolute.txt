@@ -1,0 +1,12 @@
+C:\Users\admin.dst\source\repos\PizzaApp\PizzaApp.DataAccess\bin\Debug\netcoreapp3.1\PizzaApp.DataAccess.deps.json
+C:\Users\admin.dst\source\repos\PizzaApp\PizzaApp.DataAccess\bin\Debug\netcoreapp3.1\PizzaApp.DataAccess.runtimeconfig.json
+C:\Users\admin.dst\source\repos\PizzaApp\PizzaApp.DataAccess\bin\Debug\netcoreapp3.1\PizzaApp.DataAccess.runtimeconfig.dev.json
+C:\Users\admin.dst\source\repos\PizzaApp\PizzaApp.DataAccess\bin\Debug\netcoreapp3.1\PizzaApp.DataAccess.dll
+C:\Users\admin.dst\source\repos\PizzaApp\PizzaApp.DataAccess\bin\Debug\netcoreapp3.1\PizzaApp.DataAccess.pdb
+C:\Users\admin.dst\source\repos\PizzaApp\PizzaApp.DataAccess\obj\Debug\netcoreapp3.1\PizzaApp.DataAccess.csproj.AssemblyReference.cache
+C:\Users\admin.dst\source\repos\PizzaApp\PizzaApp.DataAccess\obj\Debug\netcoreapp3.1\PizzaApp.DataAccess.AssemblyInfoInputs.cache
+C:\Users\admin.dst\source\repos\PizzaApp\PizzaApp.DataAccess\obj\Debug\netcoreapp3.1\PizzaApp.DataAccess.AssemblyInfo.cs
+C:\Users\admin.dst\source\repos\PizzaApp\PizzaApp.DataAccess\obj\Debug\netcoreapp3.1\PizzaApp.DataAccess.csproj.CoreCompileInputs.cache
+C:\Users\admin.dst\source\repos\PizzaApp\PizzaApp.DataAccess\obj\Debug\netcoreapp3.1\PizzaApp.DataAccess.dll
+C:\Users\admin.dst\source\repos\PizzaApp\PizzaApp.DataAccess\obj\Debug\netcoreapp3.1\PizzaApp.DataAccess.pdb
+C:\Users\admin.dst\source\repos\PizzaApp\PizzaApp.DataAccess\obj\Debug\netcoreapp3.1\PizzaApp.DataAccess.genruntimeconfig.cache

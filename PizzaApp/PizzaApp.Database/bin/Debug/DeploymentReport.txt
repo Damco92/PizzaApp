@@ -1,0 +1,23 @@
+﻿** Highlights
+     Tables that will be rebuilt
+       None
+     Clustered indexes that will be dropped
+       None
+     Clustered indexes that will be created
+       None
+     Possible data issues
+       None
+
+** User actions
+     Create
+       [dbo].[Orders] (Table)
+       [dbo].[Pizzas] (Table)
+       [dbo].[PizzaSize] (Table)
+       [dbo].[PizzaState] (Table)
+       [dbo].[PizzaType] (Table)
+       [dbo].[FK_pizza_type] (Foreign Key)
+       [dbo].[FK_pizza_size] (Foreign Key)
+       [dbo].[FK_pizza_state] (Foreign Key)
+       [dbo].[FK_order] (Foreign Key)
+
+** Supporting actions
