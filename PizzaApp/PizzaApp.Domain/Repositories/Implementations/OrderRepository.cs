@@ -1,4 +1,5 @@
-﻿using PizzaApp.DataAccess.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using PizzaApp.DataAccess.Models;
 using PizzaApp.Domain.Repositories.Interfaces;
 using System;
 using System.Linq;
@@ -14,7 +15,10 @@ namespace PizzaApp.Domain.Repositories.Implementations
         }
         public Order GetOrderById(int id)
         {
-            var order = _dbContext.Orders.SingleOrDefault(x => x.Id == id);
+            var order = _dbContext.Orders.Include(x => x.Pizza)
+                    .Include(x => x.StateNavigation)
+                    .Include(x => x.StateNavigation.TransitionsNextStateNavigation)
+                    .SingleOrDefault(x => x.Id == id);
 
             if(order == null)
             {

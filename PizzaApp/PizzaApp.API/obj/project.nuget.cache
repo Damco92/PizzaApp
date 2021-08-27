@@ -1,9 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "h3oetq2PVZqf2a6xm8eIfv9/5z+cJ0Q3E8GARKN2GczrAKWjyoFm2ogl/U8sryrJK3xR9nBQoP8j392C0pmTxw==",
+  "dgSpecHash": "1yQEtzJcDR4/q0UnckCTKyxJs5glWfSzoJsI826NvEU7C20EVfixlbb93biHmo7cLNfDUNTh9P36at3FgR1WpA==",
   "success": true,
   "projectFilePath": "C:\\Users\\admin.dst\\source\\repos\\PizzaApp\\PizzaApp.API\\PizzaApp.API.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\admin.dst\\.nuget\\packages\\automapper\\8.0.0\\automapper.8.0.0.nupkg.sha512",
+    "C:\\Users\\admin.dst\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\6.0.0\\automapper.extensions.microsoft.dependencyinjection.6.0.0.nupkg.sha512",
     "C:\\Users\\admin.dst\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.0\\microsoft.bcl.asyncinterfaces.1.1.0.nupkg.sha512",
     "C:\\Users\\admin.dst\\.nuget\\packages\\microsoft.bcl.hashcode\\1.1.0\\microsoft.bcl.hashcode.1.1.0.nupkg.sha512",
     "C:\\Users\\admin.dst\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
