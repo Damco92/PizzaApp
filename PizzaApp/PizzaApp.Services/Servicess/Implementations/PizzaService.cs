@@ -4,6 +4,7 @@ using PizzaApp.Domain.Repositories.Interfaces;
 using PizzaApp.Services.Dtos;
 using PizzaApp.Services.Servicess.Interfaces;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace PizzaApp.Services.Servicess.Implementations
 {
@@ -20,6 +21,18 @@ namespace PizzaApp.Services.Servicess.Implementations
         {
             var pizzas = _pizzaRepositroy.GetAllPizzas();
             return _mapper.Map<IEnumerable<PizzaDto>>(pizzas);
+        }
+
+        public IEnumerable<PizzaSizeDto> GetAllPizzaSizes()
+        {
+            var pizzaSizes = _pizzaRepositroy.GetAllPizzas().Select(x => x.PizzaSize);
+            return _mapper.Map<IEnumerable<PizzaSizeDto>>(pizzaSizes);
+        }
+
+        public IEnumerable<PizzaTypeDto> GetAllPizzaTypes()
+        {
+            var pizzaTypes = _pizzaRepositroy.GetAllPizzas().Select(x => x.PizzaType);
+            return _mapper.Map<IEnumerable<PizzaTypeDto>>(pizzaTypes);
         }
 
         public PizzaDto GetPizzaById(int id)

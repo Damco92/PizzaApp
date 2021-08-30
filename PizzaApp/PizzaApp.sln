@@ -9,11 +9,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PizzaApp.WPF", "PizzaApp.WP
 EndProject
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "PizzaApp.Database", "PizzaApp.Database\PizzaApp.Database.sqlproj", "{5C31811A-A0FA-41B9-8CBA-6B9E62C633F3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PizzaApp.DataAccess", "PizzaApp.DataAccess\PizzaApp.DataAccess.csproj", "{5F426954-CDF2-43B0-8E9F-B68EC0AD1DCD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PizzaApp.DataAccess", "PizzaApp.DataAccess\PizzaApp.DataAccess.csproj", "{5F426954-CDF2-43B0-8E9F-B68EC0AD1DCD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PizzaApp.Domain", "PizzaApp.Domain\PizzaApp.Domain.csproj", "{E5683D30-9AB3-4E29-AEF8-364C6F513C41}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PizzaApp.Domain", "PizzaApp.Domain\PizzaApp.Domain.csproj", "{E5683D30-9AB3-4E29-AEF8-364C6F513C41}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PizzaApp.Services", "PizzaApp.Services\PizzaApp.Services.csproj", "{5A76FCC6-E3E1-499B-9C93-80364BD6DD37}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PizzaApp.Services", "PizzaApp.Services\PizzaApp.Services.csproj", "{5A76FCC6-E3E1-499B-9C93-80364BD6DD37}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -22,10 +22,6 @@ namespace PizzaApp.Services.Mappings
                 opts => opts.MapFrom(source => source.TimeSubmited))
                 .ForMember(destination => destination.CurrentStateType,
                     opts => opts.MapFrom(source => source.StateNavigation.StateTypeId.ToString()))
-                .ForMember(destination => destination.PizzaType,
-                    opts => opts.MapFrom(source => source.Pizza.PizzaTypeId))
-                .ForMember(destination => destination.PizzaSize,
-                     opts => opts.MapFrom(source => source.Pizza.PizzaSizeId))
                 .ReverseMap();
 
             CreateMap<State, StateDto>()
@@ -36,6 +32,16 @@ namespace PizzaApp.Services.Mappings
                 .ForMember(destination => destination.StateType,
                 opts => opts.MapFrom(source => source.StateType.Type))
                  .ReverseMap();
+
+            CreateMap<PizzaSize, PizzaSizeDto>()
+                .ForMember(destination => destination.PizzaSize,
+                opts => opts.MapFrom(source => source.PizzaSizeId.ToString()))
+                .ReverseMap();
+
+            CreateMap<PizzaType, PizzaTypeDto>()
+                .ForMember(destination => destination.PizzaType,
+                opts => opts.MapFrom(source => source.PizzaTypeId.ToString()))
+                .ReverseMap();
         }
     }
 }

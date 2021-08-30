@@ -1,0 +1,21 @@
+{
+  "version": 2,
+  "dgSpecHash": "FKya6grPFDUsg1s4gNJWcFlNeyvlOh+EliRZKP84p7D7/hQd60vWgiPFiEuwq7OJwYJnCgCXz7lvHHCSJzcAEw==",
+  "success": false,
+  "projectFilePath": "C:\\Users\\admin.dst\\source\\repos\\PizzaApp\\PizzaApp.Services.ConnectionLayer\\PizzaApp.Services.ConnectionLayer.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\admin.dst\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "C:\\Users\\admin.dst\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512"
+  ],
+  "logs": [
+    {
+      "code": "NU1201",
+      "level": "Error",
+      "message": "Project PizzaApp.Services is not compatible with netstandard2.0 (.NETStandard,Version=v2.0). Project PizzaApp.Services supports: netcoreapp3.1 (.NETCoreApp,Version=v3.1)",
+      "libraryId": "PizzaApp.Services",
+      "targetGraphs": [
+        ".NETStandard,Version=v2.0"
+      ]
+    }
+  ]
+}

@@ -1,4 +1,5 @@
-﻿using PizzaApp.DataAccess.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using PizzaApp.DataAccess.Models;
 using PizzaApp.Domain.Repositories.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -15,7 +16,7 @@ namespace PizzaApp.Domain.Repositories.Implementations
         }
         public IEnumerable<Pizza> GetAllPizzas()
         {
-            return _dbContext.Pizzas;
+            return _dbContext.Pizzas.Include(x => x.PizzaSize).Include(x => x.PizzaType);
         }
 
         public Pizza GetPizzaById(int id)

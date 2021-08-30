@@ -35,6 +35,8 @@ namespace PizzaApp.DataAccess.Models
         {
             modelBuilder.Entity<Order>(entity =>
             {
+                entity.HasKey(o => o.Id);
+
                 entity.Property(e => e.TimeSubmited).HasColumnType("datetime");
 
                 entity.HasOne(d => d.Pizza)

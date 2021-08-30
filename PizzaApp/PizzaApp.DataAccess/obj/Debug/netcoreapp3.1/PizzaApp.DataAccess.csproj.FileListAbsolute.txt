@@ -9,3 +9,4 @@ C:\Users\admin.dst\source\repos\PizzaApp\PizzaApp.DataAccess\obj\Debug\netcoreap
 C:\Users\admin.dst\source\repos\PizzaApp\PizzaApp.DataAccess\obj\Debug\netcoreapp3.1\PizzaApp.DataAccess.dll
 C:\Users\admin.dst\source\repos\PizzaApp\PizzaApp.DataAccess\obj\Debug\netcoreapp3.1\PizzaApp.DataAccess.pdb
 C:\Users\admin.dst\source\repos\PizzaApp\PizzaApp.DataAccess\obj\Debug\netcoreapp3.1\PizzaApp.DataAccess.genruntimeconfig.cache
+C:\Users\admin.dst\source\repos\PizzaApp\PizzaApp.DataAccess\obj\Debug\netcoreapp3.1\PizzaApp.DataAccess.csproj.AssemblyReference.cache

@@ -1,0 +1,9 @@
+C:\Users\admin.dst\source\repos\PizzaApp\Test\bin\Debug\netstandard2.0\Test.deps.json
+C:\Users\admin.dst\source\repos\PizzaApp\Test\bin\Debug\netstandard2.0\Test.dll
+C:\Users\admin.dst\source\repos\PizzaApp\Test\bin\Debug\netstandard2.0\Test.pdb
+C:\Users\admin.dst\source\repos\PizzaApp\Test\obj\Debug\netstandard2.0\Test.csproj.AssemblyReference.cache
+C:\Users\admin.dst\source\repos\PizzaApp\Test\obj\Debug\netstandard2.0\Test.AssemblyInfoInputs.cache
+C:\Users\admin.dst\source\repos\PizzaApp\Test\obj\Debug\netstandard2.0\Test.AssemblyInfo.cs
+C:\Users\admin.dst\source\repos\PizzaApp\Test\obj\Debug\netstandard2.0\Test.csproj.CoreCompileInputs.cache
+C:\Users\admin.dst\source\repos\PizzaApp\Test\obj\Debug\netstandard2.0\Test.dll
+C:\Users\admin.dst\source\repos\PizzaApp\Test\obj\Debug\netstandard2.0\Test.pdb

@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using PizzaApp.Services.Dtos;
 using PizzaApp.Services.Servicess.Interfaces;
 
 namespace PizzaApp.API.Controllers
@@ -19,14 +20,14 @@ namespace PizzaApp.API.Controllers
         public IActionResult GetOrderById(int id)
         {
             var order = _ordersService.GetOrderById(id);
-            var nextStates = _stateService.GetNextStatesForOrder(id);
-            var nameOfStates = new System.Collections.Generic.List<string>();
-            foreach (var state in nextStates)
-            {
-                nameOfStates.Add(state.StateName);
-            }
-            order.NextPossibleStates = nameOfStates;
             return Ok(order);
+        }
+
+        [HttpPost("create")]
+        public IActionResult CreateOrder([FromBody] OrderDto orderViewModel)
+        {
+            _ordersService.InsertNewOrder(orderViewModel);
+            return Ok("Order added");
         }
     }
 }

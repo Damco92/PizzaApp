@@ -1,0 +1,4 @@
+C:\Users\admin.dst\source\repos\PizzaApp\PizzaApp.DataAccess\obj\Debug\netstandard2.0\PizzaApp.DataAccess.csproj.AssemblyReference.cache
+C:\Users\admin.dst\source\repos\PizzaApp\PizzaApp.DataAccess\obj\Debug\netstandard2.0\PizzaApp.DataAccess.AssemblyInfoInputs.cache
+C:\Users\admin.dst\source\repos\PizzaApp\PizzaApp.DataAccess\obj\Debug\netstandard2.0\PizzaApp.DataAccess.AssemblyInfo.cs
+C:\Users\admin.dst\source\repos\PizzaApp\PizzaApp.DataAccess\obj\Debug\netstandard2.0\PizzaApp.DataAccess.csproj.CoreCompileInputs.cache

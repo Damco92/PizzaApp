@@ -18,6 +18,20 @@ namespace PizzaApp.API.Controllers
             return Ok(result);
         }
 
+        [HttpGet("pizzaTypes")]
+        public IActionResult GetPizzaTypes()
+        {
+            var pizzaTypes = _pizzaService.GetAllPizzaTypes();
+            return Ok(pizzaTypes);
+        }
+
+        [HttpGet("pizzaSizes")]
+        public IActionResult GetPizzaSizes()
+        {
+            var pizzaSizes = _pizzaService.GetAllPizzaSizes();
+            return Ok(pizzaSizes);
+        }
+
         [HttpGet("pizza/{pizzaId}")]
         public IActionResult GetPizzaById(int pizzaId)
         {
