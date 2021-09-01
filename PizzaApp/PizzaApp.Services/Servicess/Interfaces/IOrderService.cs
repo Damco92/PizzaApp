@@ -6,5 +6,6 @@ namespace PizzaApp.Services.Servicess.Interfaces
     {
         OrderDto GetOrderById(int id);
         void InsertNewOrder(OrderDto orderDto);
+        string CheckIfOrderIsReady(int orderId);
     }
 }

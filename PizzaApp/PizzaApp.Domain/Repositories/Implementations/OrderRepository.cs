@@ -3,22 +3,23 @@ using PizzaApp.DataAccess.Models;
 using PizzaApp.Domain.Repositories.Interfaces;
 using System;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace PizzaApp.Domain.Repositories.Implementations
 {
     public class OrderRepository : IOrderRepositroy
     {
-        private readonly PizzaAppDbContext _dbContext;
+        private  PizzaAppDbContext _dbContext;
         public OrderRepository(PizzaAppDbContext dbContext)
         {
             _dbContext = dbContext;
         }
-        public Order GetOrderById(int id)
+        public async Task<Order> GetOrderById(int id)
         {
-            var order = _dbContext.Orders.Include(x => x.Pizza)
+            var order = await _dbContext.Orders.Include(x => x.Pizza)
                     .Include(x => x.StateNavigation)
                     .Include(x => x.StateNavigation.TransitionsNextStateNavigation)
-                    .SingleOrDefault(x => x.Id == id);
+                    .SingleOrDefaultAsync(x => x.Id == id);
 
             if(order == null)
             {

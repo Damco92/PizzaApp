@@ -1,4 +1,5 @@
 ﻿using Caliburn.Micro;
+using Newtonsoft.Json;
 using PizzaApp.WPF.Models;
 using System;
 using System.Collections.ObjectModel;
@@ -18,7 +19,7 @@ namespace PizzaApp.WPF.ViewModels
 
         private ObservableCollection<Pizza> GetPizzas()
         {
-            ObservableCollection<Pizza> result = new ObservableCollection<Pizza>();
+            ObservableCollection<Pizza> pizzas = new ObservableCollection<Pizza>();
             using(HttpClient client = new HttpClient())
             {
                 client.BaseAddress = new Uri("http://localhost:11231");
@@ -28,13 +29,15 @@ namespace PizzaApp.WPF.ViewModels
 
                 HttpResponseMessage response = client.GetAsync("api/pizzas").Result;
 
-                if (response.IsSuccessStatusCode)
+                if (!response.IsSuccessStatusCode)
                 {
-                    result.Add(new Pizza { });
+                    throw new ApplicationException("Did not fetch data");
                 }
-            }
 
-            return result;
+                pizzas = JsonConvert.DeserializeObject<ObservableCollection<Pizza>>("");
+
+            }
+            return pizzas;
         }
     }
 }

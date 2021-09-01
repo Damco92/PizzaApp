@@ -11,6 +11,7 @@ using PizzaApp.Domain.Repositories.Interfaces;
 using PizzaApp.Services.Mappings;
 using PizzaApp.Services.Servicess.Implementations;
 using PizzaApp.Services.Servicess.Interfaces;
+using System;
 
 namespace PizzaApp.API
 {
@@ -39,12 +40,12 @@ namespace PizzaApp.API
             IMapper mapper = mapperConfig.CreateMapper();
             services.AddSingleton(mapper);
 
-            services.AddTransient<IPizzaRepository, PizzaRepository>();
-            services.AddTransient<IPizzaService, PizzaService>();
-            services.AddTransient<IOrderRepositroy, OrderRepository>();
-            services.AddTransient<IOrderService, OrderService>();
-            services.AddTransient<IStateRepositroy, StateRepositroy>();
-            services.AddTransient<IStateService, StateService>();
+            services.AddScoped<IPizzaRepository, PizzaRepository>();
+            services.AddScoped<IPizzaService, PizzaService>();
+            services.AddScoped<IOrderRepositroy, OrderRepository>();
+            services.AddScoped<IOrderService, OrderService>();
+            services.AddScoped<IStateRepositroy, StateRepositroy>();
+            services.AddScoped<IStateService, StateService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

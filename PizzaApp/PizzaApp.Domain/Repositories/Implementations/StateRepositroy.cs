@@ -1,5 +1,6 @@
 ﻿using PizzaApp.DataAccess.Models;
 using PizzaApp.Domain.Repositories.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -7,11 +8,12 @@ namespace PizzaApp.Domain.Repositories.Implementations
 {
     public class StateRepositroy : IStateRepositroy
     {
-        private readonly PizzaAppDbContext _dbContext;
+        private PizzaAppDbContext _dbContext;
         public StateRepositroy(PizzaAppDbContext dbContext)
         {
             _dbContext = dbContext;
         }
+
         public IEnumerable<State> GetAllStates()
         {
             return _dbContext.States;

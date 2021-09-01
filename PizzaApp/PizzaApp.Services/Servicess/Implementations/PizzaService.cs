@@ -19,25 +19,27 @@ namespace PizzaApp.Services.Servicess.Implementations
         }
         public IEnumerable<PizzaDto> GetAllPizzas()
         {
-            var pizzas = _pizzaRepositroy.GetAllPizzas();
+            var pizzas = _pizzaRepositroy.GetAllPizzas().Result;
             return _mapper.Map<IEnumerable<PizzaDto>>(pizzas);
         }
 
         public IEnumerable<PizzaSizeDto> GetAllPizzaSizes()
         {
-            var pizzaSizes = _pizzaRepositroy.GetAllPizzas().Select(x => x.PizzaSize);
+            var pizzaSizes = _pizzaRepositroy.GetAllPizzas().Result
+                        .GroupBy(x => x.PizzaSize).Select(x => x.Key);
             return _mapper.Map<IEnumerable<PizzaSizeDto>>(pizzaSizes);
         }
 
         public IEnumerable<PizzaTypeDto> GetAllPizzaTypes()
         {
-            var pizzaTypes = _pizzaRepositroy.GetAllPizzas().Select(x => x.PizzaType);
+            var pizzaTypes = _pizzaRepositroy.GetAllPizzas().Result
+                                .GroupBy(x => x.PizzaType).Select(x => x.Key);
             return _mapper.Map<IEnumerable<PizzaTypeDto>>(pizzaTypes);
         }
 
         public PizzaDto GetPizzaById(int id)
         {
-            Pizza pizza = _pizzaRepositroy.GetPizzaById(id);
+            Pizza pizza = _pizzaRepositroy.GetPizzaById(id).Result;
             return _mapper.Map<PizzaDto>(pizza);
         }
     }

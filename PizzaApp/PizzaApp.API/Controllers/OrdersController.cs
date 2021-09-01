@@ -29,5 +29,12 @@ namespace PizzaApp.API.Controllers
             _ordersService.InsertNewOrder(orderViewModel);
             return Ok("Order added");
         }
+
+        [HttpGet("checkOrder/{id}")]
+        public IActionResult CheckOrder(int id)
+        {
+            var result = _ordersService.CheckIfOrderIsReady(id);
+            return Ok(result);
+        }
     }
 }

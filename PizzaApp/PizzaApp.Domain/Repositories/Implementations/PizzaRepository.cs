@@ -4,24 +4,25 @@ using PizzaApp.Domain.Repositories.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace PizzaApp.Domain.Repositories.Implementations
 {
     public class PizzaRepository : IPizzaRepository
     {
-        private readonly PizzaAppDbContext _dbContext;
+        private PizzaAppDbContext _dbContext;
         public PizzaRepository(PizzaAppDbContext dbContext)
         {
             _dbContext = dbContext;
         }
-        public IEnumerable<Pizza> GetAllPizzas()
+        public async Task<IEnumerable<Pizza>> GetAllPizzas()
         {
-            return _dbContext.Pizzas.Include(x => x.PizzaSize).Include(x => x.PizzaType);
+            return await _dbContext.Pizzas.Include(x => x.PizzaSize).Include(x => x.PizzaType).ToListAsync();
         }
 
-        public Pizza GetPizzaById(int id)
+        public async Task<Pizza> GetPizzaById(int id)
         {
-            return _dbContext.Pizzas.SingleOrDefault(x => x.Id == id);
+            return await _dbContext.Pizzas.SingleOrDefaultAsync(x => x.Id == id);
         }
         public void UpdatePizza(Pizza pizza)
         {
