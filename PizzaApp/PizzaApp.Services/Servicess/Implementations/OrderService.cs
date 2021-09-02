@@ -32,6 +32,11 @@ namespace PizzaApp.Services.Servicess.Implementations
             return "The pizza is not ready yet";
         }
 
+        public int GetLastAddedOrderId()
+        {
+            return _orderRepositroy.GetAllOrders().Result.LastOrDefault().Id;
+        }
+
         public OrderDto GetOrderById(int id)
         {
             var order = _orderRepositroy.GetOrderById(id).Result;
@@ -50,10 +55,13 @@ namespace PizzaApp.Services.Servicess.Implementations
 
         public void InsertNewOrder(OrderDto orderDto)
         {
+            orderDto.CurrentStateType = "Preparing";
+            orderDto.DateAndTimeSubmited = DateTime.Now.ToString();
+            orderDto.IsDelivered = false;
             var order = _mapper.Map<Order>(orderDto);
             order.StateId = _stateRepositroy.GetAllStates().SingleOrDefault(x => x.Id == 1).Id;
             order.PizzaId = _pizzaRepository.GetAllPizzas().Result
-                .SingleOrDefault(x => x.PizzaSizeId.ToString() == orderDto.PizzaSize 
+                .SingleOrDefault(x => x.PizzaSizeId.ToString() == orderDto.PizzaSize
                 && x.PizzaTypeId.ToString() == orderDto.PizzaType).Id;
             _orderRepositroy.InsertOrder(order);
         }

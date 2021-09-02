@@ -36,5 +36,15 @@ namespace PizzaApp.API.Controllers
             var result = _ordersService.CheckIfOrderIsReady(id);
             return Ok(result);
         }
+
+        [HttpGet("getLastOrderId")]
+        public IActionResult GetLastOrder()
+        {
+            var lastOrder = _ordersService.GetLastAddedOrderId();
+            if (lastOrder == 0)
+                return NotFound();
+
+            return Ok(lastOrder);
+        }
     }
 }

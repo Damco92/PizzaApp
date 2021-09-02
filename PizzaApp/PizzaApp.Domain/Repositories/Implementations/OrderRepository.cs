@@ -2,6 +2,7 @@
 using PizzaApp.DataAccess.Models;
 using PizzaApp.Domain.Repositories.Interfaces;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -52,6 +53,11 @@ namespace PizzaApp.Domain.Repositories.Implementations
 
             _dbContext.Orders.Remove(order);
             _dbContext.SaveChanges();
+        }
+
+        public async Task<IEnumerable<Order>> GetAllOrders()
+        {
+            return await _dbContext.Orders.ToListAsync();
         }
     }
 }

@@ -47,12 +47,9 @@
             </ComboBox>
         </StackPanel>
         <StackPanel Grid.Row="5" Grid.Column="1" Width="450" Height="30" Margin="30 0 0 20" Grid.RowSpan="2" Grid.ColumnSpan="4" Orientation="Horizontal">
-            <Button Background="LightGray" Content="Place an order" Padding="30 0 30 0" Margin="0 0 20 0"/>
-            <Button  Background="LightGray" Content="Check order" Padding="30 0 30 0" Margin="0 0 20 0"/>
+            <Button Background="LightGray" Content="Place an order" Padding="30 0 30 0" Margin="0 0 20 0" Click="Add_Order"/>
+            <Button  Background="LightGray" Content="Check order" Padding="30 0 30 0" Margin="0 0 20 0" Click="Check_Order"/>
             <Button  Background="LightGray" Content="Cancel order" Padding="30 0 30 0" Margin="0 0 20 0"/>
         </StackPanel>
-        <!--<StackPanel Grid.Row="5" Grid.Column="3" Width="150" Height="30" Margin="0 0 30 20" Grid.RowSpan="2">
-            <Button  Background="LightGray" Content="Cancel order" Padding="10 0 0 10"/>
-        </StackPanel>-->
     </Grid>
 </Window>

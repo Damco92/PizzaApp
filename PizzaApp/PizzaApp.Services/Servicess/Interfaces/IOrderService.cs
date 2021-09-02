@@ -1,4 +1,5 @@
-﻿using PizzaApp.Services.Dtos;
+﻿using PizzaApp.DataAccess.Models;
+using PizzaApp.Services.Dtos;
 
 namespace PizzaApp.Services.Servicess.Interfaces
 {
@@ -7,5 +8,6 @@ namespace PizzaApp.Services.Servicess.Interfaces
         OrderDto GetOrderById(int id);
         void InsertNewOrder(OrderDto orderDto);
         string CheckIfOrderIsReady(int orderId);
+        int GetLastAddedOrderId();
     }
 }

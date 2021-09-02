@@ -6,6 +6,7 @@ namespace PizzaApp.Domain.Repositories.Interfaces
 {
     public interface IOrderRepositroy
     {
+        Task<IEnumerable<Order>> GetAllOrders();
         Task<Order> GetOrderById(int id);
         void InsertOrder(Order order);
         void UpdateOrder(Order order);
