@@ -6,44 +6,51 @@
         xmlns:local="clr-namespace:PizzaApp.WPF.Views"
         xmlns:g="clr-namespace:PizzaApp.WPF.Helpers"
         mc:Ignorable="d"
-        Title="ShellView" Height="550" Width="850" WindowStartupLocation="CenterScreen">
+        Title="ShellView" Height="450" Width="850" WindowStartupLocation="CenterScreen">
     <Window.Resources>
         <g:ImageConverter x:Key="ImageConverter"/>
     </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
             <RowDefinition Height="2*"/>
-            <RowDefinition Height="3*"/>
-            <RowDefinition Height="3*"/>
             <RowDefinition Height="2*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="3*"/>
-            <ColumnDefinition Width="4*"/>
             <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <!--Header-->
-        <StackPanel  Orientation="Horizontal" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="3">
-            <Image Source="https://www.focus2move.com/wp-content/uploads/2020/08/Tesla-Roadster-2020-1024-03.jpg"/>
+        <StackPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="6" Grid.RowSpan="3">
+            <Image Width="Auto" Height="Auto" Source="https://d1csarkz8obe9u.cloudfront.net/posterpreviews/it%27s-pizza-time-facebook-cover-advertisement-design-template-b86105960818fc3b4e0f53ab23ebf358_screen.jpg?ts=1605218438"/>
         </StackPanel>
+        <StackPanel Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="6" Grid.RowSpan="4" Background="Wheat"/>
         <!--Lables-->
-        <StackPanel Grid.Column="0" Grid.Row="1" Orientation="Horizontal">
-            <TextBlock Text="Select pizza" FontSize="25" Margin="40 30 0 60"/>
+        <StackPanel Grid.Row="3" Grid.Column="2" Margin="50 20 20 20">
+            <TextBlock Height="40" Text="Select pizza" FontSize="25" FontWeight="Bold" FontStyle="Italic" Foreground="Black"/>
         </StackPanel>
-        <StackPanel Grid.Column="1" Grid.Row="1" Margin="40 30 0 60">
-            <ComboBox x:Name="Pizzas" Text="Pizzas" SelectedItem="{Binding SelectedPizza}" Height="50">
+        <StackPanel Grid.Row="3" Grid.Column="3" Margin="50 20 20 20">
+            <ComboBox x:Name="Pizzas" Text="Pizzas" SelectedItem="{Binding SelectedPizza}" Width="Auto" Height="35">
                 <ComboBox.ItemTemplate>
                     <DataTemplate>
-                        <TextBlock Text="{Binding PizzaSizeAndType}"/>
+                        <TextBlock Text="{Binding PizzaSizeAndType}" Foreground="BurlyWood" Background="WhiteSmoke"/>
                     </DataTemplate>
                 </ComboBox.ItemTemplate>
             </ComboBox>
         </StackPanel>
-        <StackPanel Width="200" Grid.Column="1" Grid.Row="2" Margin="0 40 60 60">
-            <Button Margin="10 0 80 50" Height="35" Background="LightGray" Content="Place an order"/>
+        <StackPanel Grid.Row="5" Grid.Column="2" Width="150" Height="30" Margin="30 0 0 20" Grid.RowSpan="2">
+            <Button Background="LightGray" Content="Place an order" Padding="10 0 0 10"/>
         </StackPanel>
-        <StackPanel Grid.Column="2" Grid.Row="2" Width="200" Margin="0 40 90 60">
-            <Button Margin="10 0 90 50" Height="35" Background="LightGray" Content="Cancel order"/>
+        <StackPanel Grid.Row="5" Grid.Column="3" Width="150" Height="30" Margin="0 0 30 20" Grid.RowSpan="2">
+            <Button  Background="LightGray" Content="Cancel order" Padding="10 0 0 10"/>
         </StackPanel>
     </Grid>
 </Window>
