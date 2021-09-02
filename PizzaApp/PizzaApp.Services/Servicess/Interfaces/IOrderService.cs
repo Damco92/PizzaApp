@@ -9,5 +9,6 @@ namespace PizzaApp.Services.Servicess.Interfaces
         void InsertNewOrder(OrderDto orderDto);
         string CheckIfOrderIsReady(int orderId);
         int GetLastAddedOrderId();
+        void UpdateLastOrderState();
     }
 }

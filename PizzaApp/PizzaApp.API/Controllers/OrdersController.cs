@@ -57,5 +57,11 @@ namespace PizzaApp.API.Controllers
 
             return Ok(result);
         }
+        [HttpPut("update")]
+        public IActionResult UpdateLastOrderState()
+        {
+           _ordersService.UpdateLastOrderState();
+            return Ok("Updated");
+        }
     }
 }

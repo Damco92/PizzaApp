@@ -65,5 +65,16 @@ namespace PizzaApp.Services.Servicess.Implementations
                 && x.PizzaTypeId.ToString() == orderDto.PizzaType).Id;
             _orderRepositroy.InsertOrder(order);
         }
+
+        public void UpdateLastOrderState()
+        {
+            var orderId = _orderRepositroy.GetAllOrders().Result.LastOrDefault().Id;
+            var order = _orderRepositroy.GetOrderById(orderId);
+            var nextState = _stateRepositroy.GetNextPossibleStatesForOrderByOrderId(orderId)
+                                    .SingleOrDefault(x => x.StateTypeId != StateTypeId.Canceled);
+            order.Result.StateNavigation.Id = nextState.Id;
+            _orderRepositroy.UpdateOrder(order.Result);
+
+        }
     }
 }
