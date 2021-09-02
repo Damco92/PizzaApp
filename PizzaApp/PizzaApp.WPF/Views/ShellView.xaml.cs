@@ -30,5 +30,13 @@ namespace PizzaApp.WPF.Views
             var resultMessage = vm.CheckCurrentOrderStatus(orderId);
             MessageBox.Show(resultMessage.Result);
         }
+
+        private async void Cancel_Order(object sender, RoutedEventArgs e)
+        {
+            var vm = (ShellViewModel)this.DataContext;
+            var orderId = await vm.GetlastOrderId();
+            var result = await vm.GetNextStateId(orderId);
+            MessageBox.Show(result.ToString());
+        }
     }
 }

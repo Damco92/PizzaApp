@@ -6,5 +6,7 @@ namespace PizzaApp.Services.Servicess.Interfaces
     public interface IStateService
     {
         IEnumerable<StateDto> GetNextStatesForOrder(int orderId);
+        int GetCurrentStateIdByOrderId(int orderId);
+        int GetNextStateIdByOrderId(int orderId);
     }
 }

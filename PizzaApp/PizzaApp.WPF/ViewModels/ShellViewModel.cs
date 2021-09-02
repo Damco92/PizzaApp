@@ -16,8 +16,6 @@ namespace PizzaApp.WPF.ViewModels
     {
         public ObservableCollection<Pizza> Pizzas { get; set; }
         private Pizza _selectedPizza;
-        public string DisplayImage { get { return @"C:\Users\d.stojanov\Desktop\Pizzas-Images\capri.png"; } }
-
         public Pizza SelectedPizza
         {
             get { return _selectedPizza; }
@@ -27,14 +25,11 @@ namespace PizzaApp.WPF.ViewModels
                 NotifyOfPropertyChange(() => SelectedPizza);
             }
         }
-
-
         public ShellViewModel()
         {
             Pizzas = GetPizzas().Result;
             
         }
-
         private async Task<ObservableCollection<Pizza>> GetPizzas()
         {
             using (HttpClient client = new HttpClient())
@@ -93,7 +88,6 @@ namespace PizzaApp.WPF.ViewModels
                 return int.Parse(result);
             }
         }
-
         public async Task<string> CheckCurrentOrderStatus(int orderId)
         {
             using (HttpClient client = new HttpClient())
@@ -111,6 +105,48 @@ namespace PizzaApp.WPF.ViewModels
                 }
 
                 return await response.Result.Content.ReadAsStringAsync();
+            }
+        }
+
+        public async Task<int> GetCurrentStateId(int orderId)
+        {
+            using(HttpClient client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("http://localhost:11231");
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(
+                new MediaTypeWithQualityHeaderValue("application/json"));
+
+                var response = client.GetAsync($"/api/orders/getStateId/{orderId}");
+
+                if (!response.Result.IsSuccessStatusCode)
+                {
+                    throw new ApplicationException("Did not fetch data");
+                }
+
+                var result = await response.Result.Content.ReadAsStringAsync();
+                return int.Parse(result);
+            }
+        }
+
+        public async Task<int> GetNextStateId(int orderId)
+        {
+            using (HttpClient client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("http://localhost:11231");
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(
+                new MediaTypeWithQualityHeaderValue("application/json"));
+
+                var response = client.GetAsync($"/api/states/state/nextState/{orderId}");
+
+                if (!response.Result.IsSuccessStatusCode)
+                {
+                    throw new ApplicationException("Did not fetch data");
+                }
+
+                var result = await response.Result.Content.ReadAsStringAsync();
+                return int.Parse(result);
             }
         }
     }

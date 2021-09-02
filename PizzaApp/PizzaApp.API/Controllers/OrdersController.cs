@@ -46,5 +46,16 @@ namespace PizzaApp.API.Controllers
 
             return Ok(lastOrder);
         }
+
+        [HttpGet("getStateId/{orderId}")]
+        public IActionResult GetCurrentState(int orderId)
+        {
+            var result = _stateService.GetCurrentStateIdByOrderId(orderId);
+
+            if (result == 0)
+                return NoContent();
+
+            return Ok(result);
+        }
     }
 }
