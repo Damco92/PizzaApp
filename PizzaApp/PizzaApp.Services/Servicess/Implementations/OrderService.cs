@@ -32,6 +32,18 @@ namespace PizzaApp.Services.Servicess.Implementations
             return "The pizza is not ready yet";
         }
 
+        public string DeleteLastOrder()
+        {
+            var order = _orderRepositroy.GetAllOrders().Result.LastOrDefault();
+            if(order == null)
+            {
+                throw new ApplicationException("Order not found");
+            }
+            order.IsDeleted = true;
+            _orderRepositroy.UpdateOrder(order);
+            return "Order is deleted";
+        }
+
         public int GetLastAddedOrderId()
         {
             return _orderRepositroy.GetAllOrders().Result.LastOrDefault().Id;

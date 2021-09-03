@@ -3,17 +3,17 @@ using Newtonsoft.Json;
 using PizzaApp.WPF.Models;
 using System;
 using System.Collections.ObjectModel;
-using System.Drawing;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Media.Imaging;
+using System.Windows.Threading;
 
 namespace PizzaApp.WPF.ViewModels
 {
     public class ShellViewModel : Screen
     {
+        private DispatcherTimer _dispatcherTimer;
         public ObservableCollection<Pizza> Pizzas { get; set; }
         private Pizza _selectedPizza;
         public Pizza SelectedPizza
@@ -28,8 +28,8 @@ namespace PizzaApp.WPF.ViewModels
         public ShellViewModel()
         {
             Pizzas = GetPizzas().Result;
-            
         }
+
         private async Task<ObservableCollection<Pizza>> GetPizzas()
         {
             using (HttpClient client = new HttpClient())
@@ -49,7 +49,6 @@ namespace PizzaApp.WPF.ViewModels
                 return JsonConvert.DeserializeObject<ObservableCollection<Pizza>>(await response.Result.Content.ReadAsStringAsync());
             }
         }
-
         public async Task<string> InsertOrder(Pizza pizza)
         {
             var json = JsonConvert.SerializeObject(pizza);
@@ -147,6 +146,55 @@ namespace PizzaApp.WPF.ViewModels
 
                 var result = await response.Result.Content.ReadAsStringAsync();
                 return int.Parse(result);
+            }
+        }
+        public async Task<string> Start_Check_PizzaJob()
+        {
+            _dispatcherTimer = new DispatcherTimer();
+            _dispatcherTimer.Interval = TimeSpan.FromMinutes(1);
+            _dispatcherTimer.Start();
+            var orderId = await GetlastOrderId();
+            string result;
+            var timer = new System.Threading.Timer((e) =>
+            {
+               result =  CheckCurrentOrderStatus(orderId).Result;
+            });
+            return "";
+        }
+        public async Task<string> DeleteLastOrder()
+        {
+            var url = "http://localhost:11231/api/orders/delete";
+            var lastOrderId = await GetlastOrderId();
+            Order order = new Order();
+            using (HttpClient client = new HttpClient()) 
+            {
+                client.BaseAddress = new Uri("http://localhost:11231/");
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(
+                new MediaTypeWithQualityHeaderValue("application/json"));
+
+                var response = client.GetAsync($"api/orders/order/{lastOrderId}");
+
+                if (!response.Result.IsSuccessStatusCode)
+                {
+                    throw new ApplicationException("Did not fetch data");
+                }
+
+                order = JsonConvert.DeserializeObject<Order>(await response.Result.Content.ReadAsStringAsync());
+            }
+            var json = JsonConvert.SerializeObject(order);
+            var data = new StringContent(json, Encoding.UTF8, "application/json");
+            using (HttpClient client = new HttpClient())
+            {
+
+                var response = client.PutAsync(url, data);
+
+                if (!response.Result.IsSuccessStatusCode)
+                {
+                    throw new ApplicationException("Order not deleted");
+                }
+
+                return await response.Result.Content.ReadAsStringAsync();
             }
         }
     }

@@ -133,6 +133,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Helpers\ImageConverter.cs" />
+    <Compile Include="Models\Order.cs" />
     <Compile Include="Models\Pizza.cs" />
     <Compile Include="ViewModels\ShellViewModel.cs" />
     <Compile Include="Views\ShellView.xaml.cs">

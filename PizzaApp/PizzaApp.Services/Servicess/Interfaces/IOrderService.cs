@@ -10,5 +10,6 @@ namespace PizzaApp.Services.Servicess.Interfaces
         string CheckIfOrderIsReady(int orderId);
         int GetLastAddedOrderId();
         void UpdateLastOrderState();
+        string DeleteLastOrder();
     }
 }

@@ -63,5 +63,12 @@ namespace PizzaApp.API.Controllers
            _ordersService.UpdateLastOrderState();
             return Ok("Updated");
         }
+
+        [HttpPut("delete")]
+        public IActionResult DeleteLastOrder()
+        {
+            var result = _ordersService.DeleteLastOrder();
+            return Ok(result);
+        }
     }
 }

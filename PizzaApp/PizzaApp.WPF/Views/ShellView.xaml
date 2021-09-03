@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:PizzaApp.WPF.Views"
         xmlns:g="clr-namespace:PizzaApp.WPF.Helpers"
         mc:Ignorable="d"
-        Title="ShellView" Height="450" Width="850" WindowStartupLocation="CenterScreen">
+        Title="ShellView" Height="450" Width="1200" WindowStartupLocation="CenterScreen">
     <Window.Resources>
         <g:ImageConverter x:Key="ImageConverter"/>
     </Window.Resources>
@@ -46,10 +46,12 @@
                 </ComboBox.ItemTemplate>
             </ComboBox>
         </StackPanel>
-        <StackPanel Grid.Row="5" Grid.Column="1" Width="450" Height="30" Margin="30 0 0 20" Grid.RowSpan="2" Grid.ColumnSpan="4" Orientation="Horizontal">
-            <Button Background="LightGray" Content="Place an order" Padding="30 0 30 0" Margin="0 0 20 0" Click="Add_Order"/>
-            <Button  Background="LightGray" Content="Check order" Padding="30 0 30 0" Margin="0 0 20 0" Click="Check_Order"/>
-            <Button  Background="LightGray" Content="Cancel order" Padding="30 0 30 0" Margin="0 0 20 0" Click="Cancel_Order"/>
+        <StackPanel Grid.Row="5" Grid.Column="1" Width="900" Height="30" Margin="0 0 0 20" Grid.RowSpan="2" Grid.ColumnSpan="4" Orientation="Horizontal">
+            <Button Background="LightGray" Name="add_order_btn" Content="Place an order" Padding="30 0 30 0" Margin="0 0 20 0" Click="Add_Order"/>
+            <Button  Background="LightGray" Content="Check order" Name="check_order_btn" Padding="30 0 30 0" Margin="0 0 20 0" Click="Check_Order"/>
+            <Button  Background="LightGray" Content="Run check every minute" Name="check_order_job_btn" Padding="30 0 30 0" Margin="0 0 20 0" Click="Start_Check_PizzaJob"/>
+            <Button  Background="LightGray" Content="Cancel checking order job" Name="cancel_checking_order_job" Padding="30 0 30 0" Margin="0 0 20 0" Click="cancel_checking_order_job_Click"/>
+            <Button  Background="LightGray" Content="Cancel order" Padding="30 0 30 0" Margin="0 0 20 0" Click="Cancel_Order" Name="cancel_order_btn"/>
         </StackPanel>
     </Grid>
 </Window>
