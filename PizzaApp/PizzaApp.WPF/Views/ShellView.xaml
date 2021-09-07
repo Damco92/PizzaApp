@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:PizzaApp.WPF.Views"
         xmlns:g="clr-namespace:PizzaApp.WPF.Helpers"
         mc:Ignorable="d"
-        Title="ShellView" Height="450" Width="1200" WindowStartupLocation="CenterScreen">
+        Title="ShellView" Height="450" Width="1250" WindowStartupLocation="CenterScreen">
     <Window.Resources>
         <g:ImageConverter x:Key="ImageConverter"/>
     </Window.Resources>

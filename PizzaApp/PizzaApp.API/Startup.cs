@@ -30,7 +30,8 @@ namespace PizzaApp.API
             services.AddControllers();
 
             services.AddDbContext<PizzaAppDbContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")),
+                ServiceLifetime.Transient);
 
             var mapperConfig = new MapperConfiguration(mc =>
             {
@@ -46,6 +47,12 @@ namespace PizzaApp.API
             services.AddScoped<IOrderService, OrderService>();
             services.AddScoped<IStateRepositroy, StateRepositroy>();
             services.AddScoped<IStateService, StateService>();
+            services.AddCors(o => o.AddPolicy("MyPolicy", builder =>
+            {
+                builder.AllowAnyOrigin()
+                       .AllowAnyMethod()
+                       .AllowAnyHeader();
+            }));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

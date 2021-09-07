@@ -30,10 +30,10 @@ namespace PizzaApp.API.Controllers
             return Ok("Order added");
         }
 
-        [HttpGet("checkOrder/{id}")]
-        public IActionResult CheckOrder(int id)
+        [HttpGet("checkOrder")]
+        public IActionResult CheckOrder()
         {
-            var result = _ordersService.CheckIfOrderIsReady(id);
+            var result = _ordersService.CheckIfOrderIsReady();
             return Ok(result);
         }
 
@@ -60,8 +60,8 @@ namespace PizzaApp.API.Controllers
         [HttpPut("update")]
         public IActionResult UpdateLastOrderState()
         {
-           _ordersService.UpdateLastOrderState();
-            return Ok("Updated");
+           var result = _ordersService.UpdateLastOrderState();
+            return Ok(result);
         }
 
         [HttpPut("delete")]

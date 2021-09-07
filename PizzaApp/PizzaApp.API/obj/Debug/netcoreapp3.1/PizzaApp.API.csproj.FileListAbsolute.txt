@@ -1,3 +1,7 @@
+C:\Users\admin.dst\source\repos\PizzaApp\PizzaApp.API\obj\Debug\netcoreapp3.1\PizzaApp.API.AssemblyInfoInputs.cache
+C:\Users\admin.dst\source\repos\PizzaApp\PizzaApp.API\obj\Debug\netcoreapp3.1\PizzaApp.API.AssemblyInfo.cs
+C:\Users\admin.dst\source\repos\PizzaApp\PizzaApp.API\obj\Debug\netcoreapp3.1\PizzaApp.API.csproj.CoreCompileInputs.cache
+C:\Users\admin.dst\source\repos\PizzaApp\PizzaApp.API\obj\Debug\netcoreapp3.1\PizzaApp.API.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\admin.dst\source\repos\PizzaApp\PizzaApp.API\bin\Debug\netcoreapp3.1\appsettings.Development.json
 C:\Users\admin.dst\source\repos\PizzaApp\PizzaApp.API\bin\Debug\netcoreapp3.1\appsettings.json
 C:\Users\admin.dst\source\repos\PizzaApp\PizzaApp.API\bin\Debug\netcoreapp3.1\PizzaApp.API.exe
@@ -35,10 +39,6 @@ C:\Users\admin.dst\source\repos\PizzaApp\PizzaApp.API\bin\Debug\netcoreapp3.1\Pi
 C:\Users\admin.dst\source\repos\PizzaApp\PizzaApp.API\bin\Debug\netcoreapp3.1\PizzaApp.Services.pdb
 C:\Users\admin.dst\source\repos\PizzaApp\PizzaApp.API\bin\Debug\netcoreapp3.1\PizzaApp.Domain.pdb
 C:\Users\admin.dst\source\repos\PizzaApp\PizzaApp.API\obj\Debug\netcoreapp3.1\PizzaApp.API.csproj.AssemblyReference.cache
-C:\Users\admin.dst\source\repos\PizzaApp\PizzaApp.API\obj\Debug\netcoreapp3.1\PizzaApp.API.AssemblyInfoInputs.cache
-C:\Users\admin.dst\source\repos\PizzaApp\PizzaApp.API\obj\Debug\netcoreapp3.1\PizzaApp.API.AssemblyInfo.cs
-C:\Users\admin.dst\source\repos\PizzaApp\PizzaApp.API\obj\Debug\netcoreapp3.1\PizzaApp.API.csproj.CoreCompileInputs.cache
-C:\Users\admin.dst\source\repos\PizzaApp\PizzaApp.API\obj\Debug\netcoreapp3.1\PizzaApp.API.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\admin.dst\source\repos\PizzaApp\PizzaApp.API\obj\Debug\netcoreapp3.1\staticwebassets\PizzaApp.API.StaticWebAssets.Manifest.cache
 C:\Users\admin.dst\source\repos\PizzaApp\PizzaApp.API\obj\Debug\netcoreapp3.1\staticwebassets\PizzaApp.API.StaticWebAssets.xml
 C:\Users\admin.dst\source\repos\PizzaApp\PizzaApp.API\obj\Debug\netcoreapp3.1\scopedcss\bundle\PizzaApp.API.styles.css

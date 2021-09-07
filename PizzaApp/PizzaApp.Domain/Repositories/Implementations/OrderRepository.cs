@@ -57,7 +57,7 @@ namespace PizzaApp.Domain.Repositories.Implementations
 
         public async Task<IEnumerable<Order>> GetAllOrders()
         {
-            return await _dbContext.Orders.ToListAsync();
+            return await _dbContext.Orders.Include(x => x.StateNavigation).ToListAsync();
         }
     }
 }

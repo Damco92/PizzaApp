@@ -1,3 +1,7 @@
+C:\Users\admin.dst\source\repos\PizzaApp\PizzaApp.Services\obj\Debug\netcoreapp3.1\PizzaApp.Services.csproj.AssemblyReference.cache
+C:\Users\admin.dst\source\repos\PizzaApp\PizzaApp.Services\obj\Debug\netcoreapp3.1\PizzaApp.Services.AssemblyInfoInputs.cache
+C:\Users\admin.dst\source\repos\PizzaApp\PizzaApp.Services\obj\Debug\netcoreapp3.1\PizzaApp.Services.AssemblyInfo.cs
+C:\Users\admin.dst\source\repos\PizzaApp\PizzaApp.Services\obj\Debug\netcoreapp3.1\PizzaApp.Services.csproj.CoreCompileInputs.cache
 C:\Users\admin.dst\source\repos\PizzaApp\PizzaApp.Services\bin\Debug\netcoreapp3.1\PizzaApp.Services.deps.json
 C:\Users\admin.dst\source\repos\PizzaApp\PizzaApp.Services\bin\Debug\netcoreapp3.1\PizzaApp.Services.dll
 C:\Users\admin.dst\source\repos\PizzaApp\PizzaApp.Services\bin\Debug\netcoreapp3.1\PizzaApp.Services.pdb
@@ -5,10 +9,6 @@ C:\Users\admin.dst\source\repos\PizzaApp\PizzaApp.Services\bin\Debug\netcoreapp3
 C:\Users\admin.dst\source\repos\PizzaApp\PizzaApp.Services\bin\Debug\netcoreapp3.1\PizzaApp.Domain.dll
 C:\Users\admin.dst\source\repos\PizzaApp\PizzaApp.Services\bin\Debug\netcoreapp3.1\PizzaApp.DataAccess.pdb
 C:\Users\admin.dst\source\repos\PizzaApp\PizzaApp.Services\bin\Debug\netcoreapp3.1\PizzaApp.Domain.pdb
-C:\Users\admin.dst\source\repos\PizzaApp\PizzaApp.Services\obj\Debug\netcoreapp3.1\PizzaApp.Services.csproj.AssemblyReference.cache
-C:\Users\admin.dst\source\repos\PizzaApp\PizzaApp.Services\obj\Debug\netcoreapp3.1\PizzaApp.Services.AssemblyInfoInputs.cache
-C:\Users\admin.dst\source\repos\PizzaApp\PizzaApp.Services\obj\Debug\netcoreapp3.1\PizzaApp.Services.AssemblyInfo.cs
-C:\Users\admin.dst\source\repos\PizzaApp\PizzaApp.Services\obj\Debug\netcoreapp3.1\PizzaApp.Services.csproj.CoreCompileInputs.cache
 C:\Users\admin.dst\source\repos\PizzaApp\PizzaApp.Services\obj\Debug\netcoreapp3.1\PizzaApp.Services.csproj.CopyComplete
 C:\Users\admin.dst\source\repos\PizzaApp\PizzaApp.Services\obj\Debug\netcoreapp3.1\PizzaApp.Services.dll
 C:\Users\admin.dst\source\repos\PizzaApp\PizzaApp.Services\obj\Debug\netcoreapp3.1\PizzaApp.Services.pdb

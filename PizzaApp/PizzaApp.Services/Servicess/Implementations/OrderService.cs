@@ -22,23 +22,23 @@ namespace PizzaApp.Services.Servicess.Implementations
             _mapper = mapper;
         }
 
-        public string CheckIfOrderIsReady(int orderId)
+        public string CheckIfOrderIsReady()
         {
-            var order = _orderRepositroy.GetOrderById(orderId).Result;
+            var order = _orderRepositroy.GetAllOrders().Result.LastOrDefault();
             if(DateTime.Now > order.TimeSubmited.Value.AddMinutes(20))
             {
                 return "The pizza is burrned";
             }
-            return "The pizza is not ready yet";
+            return order.StateNavigation.Description;
         }
 
         public string DeleteLastOrder()
         {
             var order = _orderRepositroy.GetAllOrders().Result.LastOrDefault();
-            if(order == null)
-            {
-                throw new ApplicationException("Order not found");
-            }
+
+            if (order.IsDeleted)
+                return "Order is already deleted. Place a new order";
+
             order.IsDeleted = true;
             _orderRepositroy.UpdateOrder(order);
             return "Order is deleted";
@@ -78,15 +78,19 @@ namespace PizzaApp.Services.Servicess.Implementations
             _orderRepositroy.InsertOrder(order);
         }
 
-        public void UpdateLastOrderState()
+        public string UpdateLastOrderState()
         {
-            var orderId = _orderRepositroy.GetAllOrders().Result.LastOrDefault().Id;
-            var order = _orderRepositroy.GetOrderById(orderId);
-            var nextState = _stateRepositroy.GetNextPossibleStatesForOrderByOrderId(orderId)
+            var lastOrderId = _orderRepositroy.GetAllOrders().Result.LastOrDefault().Id;
+            var order = _orderRepositroy.GetOrderById(lastOrderId);
+            var nextState = _stateRepositroy.GetNextPossibleStatesForOrderByOrderId(lastOrderId)
                                     .SingleOrDefault(x => x.StateTypeId != StateTypeId.Canceled);
-            order.Result.StateNavigation.Id = nextState.Id;
+            if(nextState == null)
+            {
+                return "The order is delivered";
+            }
+            order.Result.StateId = nextState.Id;
             _orderRepositroy.UpdateOrder(order.Result);
-
+            return "Updated";
         }
     }
 }

@@ -7,13 +7,11 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Threading;
 
 namespace PizzaApp.WPF.ViewModels
 {
     public class ShellViewModel : Screen
     {
-        private DispatcherTimer _dispatcherTimer;
         public ObservableCollection<Pizza> Pizzas { get; set; }
         private Pizza _selectedPizza;
         public Pizza SelectedPizza
@@ -27,7 +25,7 @@ namespace PizzaApp.WPF.ViewModels
         }
         public ShellViewModel()
         {
-            Pizzas = GetPizzas().Result;
+            Pizzas =  GetPizzas().Result;
         }
 
         private async Task<ObservableCollection<Pizza>> GetPizzas()
@@ -60,7 +58,7 @@ namespace PizzaApp.WPF.ViewModels
 
                 if (!response.IsSuccessStatusCode)
                 {
-                    throw new ApplicationException("Did not insert data");
+                    throw new Exception();
                 }
                 return await response.Content.ReadAsStringAsync();
             }
@@ -75,19 +73,19 @@ namespace PizzaApp.WPF.ViewModels
                 client.DefaultRequestHeaders.Accept.Add(
                 new MediaTypeWithQualityHeaderValue("application/json"));
 
-                var response = client.GetAsync("/api/orders/getLastOrderId");
+                var response = await client.GetAsync("/api/orders/getLastOrderId");
 
-                if (!response.Result.IsSuccessStatusCode)
+                if (!response.IsSuccessStatusCode)
                 {
-                    throw new ApplicationException("No orders added yet");
+                    throw new Exception("No order exists in the database");
                 }
 
-               var result = await response.Result.Content.ReadAsStringAsync();
+               var result = await response.Content.ReadAsStringAsync();
 
                 return int.Parse(result);
             }
         }
-        public async Task<string> CheckCurrentOrderStatus(int orderId)
+        public async Task<string> CheckCurrentOrderStatus()
         {
             using (HttpClient client = new HttpClient())
             {
@@ -96,14 +94,14 @@ namespace PizzaApp.WPF.ViewModels
                 client.DefaultRequestHeaders.Accept.Add(
                 new MediaTypeWithQualityHeaderValue("application/json"));
 
-                var response = client.GetAsync($"/api/orders/checkOrder/{orderId}");
+                var response = await client.GetAsync($"/api/orders/checkOrder");
 
-                if (!response.Result.IsSuccessStatusCode)
+                if (!response.IsSuccessStatusCode)
                 {
-                    throw new ApplicationException("Did not fetch data");
+                    throw new Exception();
                 }
 
-                return await response.Result.Content.ReadAsStringAsync();
+                return await response.Content.ReadAsStringAsync();
             }
         }
 
@@ -116,14 +114,14 @@ namespace PizzaApp.WPF.ViewModels
                 client.DefaultRequestHeaders.Accept.Add(
                 new MediaTypeWithQualityHeaderValue("application/json"));
 
-                var response = client.GetAsync($"/api/orders/getStateId/{orderId}");
+                var response = await client.GetAsync($"/api/orders/getStateId/{orderId}");
 
-                if (!response.Result.IsSuccessStatusCode)
+                if (!response.IsSuccessStatusCode)
                 {
-                    throw new ApplicationException("Did not fetch data");
+                    throw new Exception();
                 }
 
-                var result = await response.Result.Content.ReadAsStringAsync();
+                var result = await response.Content.ReadAsStringAsync();
                 return int.Parse(result);
             }
         }
@@ -137,34 +135,29 @@ namespace PizzaApp.WPF.ViewModels
                 client.DefaultRequestHeaders.Accept.Add(
                 new MediaTypeWithQualityHeaderValue("application/json"));
 
-                var response = client.GetAsync($"/api/states/state/nextState/{orderId}");
+                var response = await client.GetAsync($"/api/states/state/nextState/{orderId}");
 
-                if (!response.Result.IsSuccessStatusCode)
+                if (!response.IsSuccessStatusCode)
                 {
-                    throw new ApplicationException("Did not fetch data");
+                    throw new Exception();
                 }
 
-                var result = await response.Result.Content.ReadAsStringAsync();
+                var result = await response.Content.ReadAsStringAsync();
                 return int.Parse(result);
             }
-        }
-        public async Task<string> Start_Check_PizzaJob()
-        {
-            _dispatcherTimer = new DispatcherTimer();
-            _dispatcherTimer.Interval = TimeSpan.FromMinutes(1);
-            _dispatcherTimer.Start();
-            var orderId = await GetlastOrderId();
-            string result;
-            var timer = new System.Threading.Timer((e) =>
-            {
-               result =  CheckCurrentOrderStatus(orderId).Result;
-            });
-            return "";
         }
         public async Task<string> DeleteLastOrder()
         {
             var url = "http://localhost:11231/api/orders/delete";
-            var lastOrderId = await GetlastOrderId();
+            int lastOrderId;
+            try
+            {
+                lastOrderId = await GetlastOrderId();
+            }
+            catch (Exception ex)
+            {
+                return ex.Message;
+            }
             Order order = new Order();
             using (HttpClient client = new HttpClient()) 
             {
@@ -173,28 +166,71 @@ namespace PizzaApp.WPF.ViewModels
                 client.DefaultRequestHeaders.Accept.Add(
                 new MediaTypeWithQualityHeaderValue("application/json"));
 
-                var response = client.GetAsync($"api/orders/order/{lastOrderId}");
+                var response = await client.GetAsync($"api/orders/order/{lastOrderId}");
 
-                if (!response.Result.IsSuccessStatusCode)
+                if (!response.IsSuccessStatusCode)
                 {
-                    throw new ApplicationException("Did not fetch data");
+                    throw new Exception("The order is not found");
                 }
 
-                order = JsonConvert.DeserializeObject<Order>(await response.Result.Content.ReadAsStringAsync());
+                order = JsonConvert.DeserializeObject<Order>(await response.Content.ReadAsStringAsync());
             }
             var json = JsonConvert.SerializeObject(order);
             var data = new StringContent(json, Encoding.UTF8, "application/json");
             using (HttpClient client = new HttpClient())
             {
 
-                var response = client.PutAsync(url, data);
+                var response = await client.PutAsync(url, data);
 
-                if (!response.Result.IsSuccessStatusCode)
+                if (!response.IsSuccessStatusCode)
                 {
-                    throw new ApplicationException("Order not deleted");
+                    throw new Exception("The order is not deleted");
                 }
 
-                return await response.Result.Content.ReadAsStringAsync();
+                return await response.Content.ReadAsStringAsync();
+            }
+        }
+
+        public async Task<string> UpdateLastOrderStatus()
+        {
+            var url = "http://localhost:11231/api/orders/update";
+            int lastOrderId;
+            try
+            {
+                lastOrderId = await GetlastOrderId();
+            }
+            catch (Exception ex)
+            {
+                return ex.Message;
+            }
+            Order order = new Order();
+            using (HttpClient client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("http://localhost:11231/");
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(
+                new MediaTypeWithQualityHeaderValue("application/json"));
+
+                var response = await client.GetAsync($"api/orders/order/{lastOrderId}");
+
+                if (!response.IsSuccessStatusCode)
+                {
+                    throw new Exception("The order is not found");
+                }
+
+                order = JsonConvert.DeserializeObject<Order>(await response.Content.ReadAsStringAsync());
+            }
+            var json = JsonConvert.SerializeObject(order);
+            var data = new StringContent(json, Encoding.UTF8, "application/json");
+            using (HttpClient client = new HttpClient())
+            {
+                var response = await client.PutAsync(url, data);
+
+                if (!response.IsSuccessStatusCode)
+                {
+                    throw new Exception("The order was not updated");
+                }
+                return await response.Content.ReadAsStringAsync();
             }
         }
     }
