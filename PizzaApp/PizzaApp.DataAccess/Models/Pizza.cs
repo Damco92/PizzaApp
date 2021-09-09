@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace PizzaApp.DataAccess.Models
 {
@@ -12,6 +13,8 @@ namespace PizzaApp.DataAccess.Models
 
         public PizzaTypeId PizzaTypeId { get; set; }
         public PizzaSizeId PizzaSizeId { get; set; }
+        [Required]
+        public bool IsActive { get; set; }
 
         public virtual PizzaSize PizzaSize { get; set; }
         public virtual PizzaType PizzaType { get; set; }

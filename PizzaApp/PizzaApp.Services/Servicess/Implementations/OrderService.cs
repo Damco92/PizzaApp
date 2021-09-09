@@ -29,7 +29,7 @@ namespace PizzaApp.Services.Servicess.Implementations
             {
                 return "The pizza is burrned";
             }
-            return order.StateNavigation.Description;
+            return order.StateNavigation.StateTypeId.ToString();
         }
 
         public string DeleteLastOrder()
@@ -84,13 +84,32 @@ namespace PizzaApp.Services.Servicess.Implementations
             var order = _orderRepositroy.GetOrderById(lastOrderId);
             var nextState = _stateRepositroy.GetNextPossibleStatesForOrderByOrderId(lastOrderId)
                                     .SingleOrDefault(x => x.StateTypeId != StateTypeId.Canceled);
+            string result = string.Empty;
             if(nextState == null)
             {
                 return "The order is delivered";
             }
             order.Result.StateId = nextState.Id;
             _orderRepositroy.UpdateOrder(order.Result);
-            return "Updated";
+            switch (order.Result.StateId)
+            {
+                case (int)StateTypeId.Preparing:
+                    result = StateTypeId.Preparing.ToString();
+                    break;
+                case (int)StateTypeId.Baking:
+                    result = StateTypeId.Baking.ToString();
+                    break;
+                case (int)StateTypeId.Delivering:
+                    result = StateTypeId.Delivering.ToString(); 
+                    break;
+                case (int)StateTypeId.Delivered:
+                    result = StateTypeId.Delivered.ToString();
+                    break;
+                default:
+                    break;
+            }
+
+            return result;
         }
     }
 }

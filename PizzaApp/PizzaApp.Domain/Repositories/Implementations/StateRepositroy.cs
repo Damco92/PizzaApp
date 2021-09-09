@@ -40,8 +40,9 @@ namespace PizzaApp.Domain.Repositories.Implementations
                 throw new System.Exception("Order does not exist");
             }
 
-            return _dbContext.Transitions.Where(x => x.CurrentStateId == order.StateId)
+            var result = _dbContext.Transitions.Where(x => x.CurrentStateId == order.StateId)
                                         .Select(x => x.NextStateNavigation);
+            return result;
         }
 
         public void UpdateStateForOrderByOrderId(int orderId, State newState)

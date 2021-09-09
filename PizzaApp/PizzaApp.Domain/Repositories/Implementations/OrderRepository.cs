@@ -19,7 +19,6 @@ namespace PizzaApp.Domain.Repositories.Implementations
         {
             var order = await _dbContext.Orders.Include(x => x.Pizza)
                     .Include(x => x.StateNavigation)
-                    .Include(x => x.StateNavigation.TransitionsNextStateNavigation)
                     .SingleOrDefaultAsync(x => x.Id == id);
 
             if(order == null)

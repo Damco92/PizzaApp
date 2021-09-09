@@ -31,13 +31,23 @@ namespace PizzaApp.WPF.Views
             var vm = (ShellViewModel)this.DataContext;
             var message = await vm.InsertOrder(selectedPizza);
             MessageBox.Show(message);
+            if (message == "No pizza has been selected")
+            {
+                _isNewOrderCreated = false;
+                EnableDisableCreateOrderButtons();
+                return;
+            }
             _timer = new DispatcherTimer();
-            _timer.Interval = TimeSpan.FromMinutes(2);
+            _timer.Interval = TimeSpan.FromSeconds(30);
             _timer.Tick += new EventHandler(async (object s, EventArgs a) =>
             {
                 var result = await vm.UpdateLastOrderStatus();
-                if (result == "The order is delivered")
+                if (result == "Delivered")
+                {
                     _timer.Stop();
+                    _isNewOrderCreated = false;
+                    EnableDisableCreateOrderButtons();
+                }
             });
             _timer.Start();
         }
@@ -47,6 +57,10 @@ namespace PizzaApp.WPF.Views
             EnableDisableCheckOrderButtons();
             var vm = (ShellViewModel)this.DataContext;
             var resultMessage = await vm.CheckCurrentOrderStatus();
+            if(resultMessage == "The pizza has been delivered to the customer")
+            {
+                _isNewOrderCreated = false;
+            }
             MessageBox.Show(resultMessage);
         }
 
@@ -55,14 +69,20 @@ namespace PizzaApp.WPF.Views
             _isCheckOrderJobRunning = true;
             EnableDisableCheckOrderButtons();
             var vm = (ShellViewModel)this.DataContext;
-            _timer = new DispatcherTimer();
-            _timer.Interval = TimeSpan.FromMinutes(1);
-            _timer.Tick += new EventHandler(async (object s, EventArgs a) =>
+            DispatcherTimer checkerTimer = new DispatcherTimer();
+            checkerTimer.Interval = TimeSpan.FromSeconds(35);
+            checkerTimer.Tick += new EventHandler(async (object s, EventArgs a) =>
             {
                 var result = await vm.CheckCurrentOrderStatus();
-                MessageBox.Show(result);
+                var cleanResult = result.Remove(0, 1).Remove(result.Length -2, 1);
+                MessageBox.Show(cleanResult);
+                if (cleanResult == "Delivered")
+                {
+                    checkerTimer.Stop();
+                    return;
+                }
             });
-            _timer.Start();
+            checkerTimer.Start();
         }
         private void cancel_checking_order_job_Click(object sender, RoutedEventArgs e)
         {
@@ -116,7 +136,7 @@ namespace PizzaApp.WPF.Views
             {
                 check_order_btn.IsEnabled = false;
                 check_order_job_btn.IsEnabled = false;
-                cancel_checking_order_job.IsEnabled = true;
+                cancel_checking_order_job.IsEnabled = false;
                 add_order_btn.IsEnabled = true;
             }
         }

@@ -49,6 +49,10 @@ namespace PizzaApp.WPF.ViewModels
         }
         public async Task<string> InsertOrder(Pizza pizza)
         {
+            if(pizza == null)
+            {
+                return "No pizza has been selected";
+            }
             var json = JsonConvert.SerializeObject(pizza);
             var data = new StringContent(json, Encoding.UTF8, "application/json");
             var url = "http://localhost:11231/api/orders/create";
@@ -211,26 +215,26 @@ namespace PizzaApp.WPF.ViewModels
                 client.DefaultRequestHeaders.Accept.Add(
                 new MediaTypeWithQualityHeaderValue("application/json"));
 
-                var response = await client.GetAsync($"api/orders/order/{lastOrderId}");
+                var response = client.GetAsync($"api/orders/order/{lastOrderId}");
 
-                if (!response.IsSuccessStatusCode)
+                if (!response.Result.IsSuccessStatusCode)
                 {
                     throw new Exception("The order is not found");
                 }
 
-                order = JsonConvert.DeserializeObject<Order>(await response.Content.ReadAsStringAsync());
+                order = JsonConvert.DeserializeObject<Order>(await response.Result.Content.ReadAsStringAsync());
             }
             var json = JsonConvert.SerializeObject(order);
             var data = new StringContent(json, Encoding.UTF8, "application/json");
             using (HttpClient client = new HttpClient())
             {
-                var response = await client.PutAsync(url, data);
+                var response = client.PutAsync(url, data);
 
-                if (!response.IsSuccessStatusCode)
+                if (!response.Result.IsSuccessStatusCode)
                 {
                     throw new Exception("The order was not updated");
                 }
-                return await response.Content.ReadAsStringAsync();
+                return await response.Result.Content.ReadAsStringAsync();
             }
         }
     }

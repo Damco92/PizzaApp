@@ -14,7 +14,7 @@ namespace PizzaApp.API.Controllers
         }
         public IActionResult GetPizzas()
         {
-            var result = _pizzaService.GetAllPizzas();
+            var result = _pizzaService.GetAllActivePizzas();
             return Ok(result);
         }
 

@@ -7,6 +7,7 @@ namespace PizzaApp.Services.Servicess.Interfaces
     public interface IPizzaService
     {
         IEnumerable<PizzaDto> GetAllPizzas();
+        IEnumerable<PizzaDto> GetAllActivePizzas();
         IEnumerable<PizzaSizeDto> GetAllPizzaSizes();
         IEnumerable<PizzaTypeDto> GetAllPizzaTypes();
         PizzaDto GetPizzaById(int id);

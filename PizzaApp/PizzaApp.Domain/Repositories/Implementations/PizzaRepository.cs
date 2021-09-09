@@ -20,6 +20,12 @@ namespace PizzaApp.Domain.Repositories.Implementations
             return await _dbContext.Pizzas.Include(x => x.PizzaSize).Include(x => x.PizzaType).ToListAsync();
         }
 
+        public async Task<IEnumerable<Pizza>> GetAllActivePizzas()
+        {
+            return await _dbContext.Pizzas.Include(x => x.PizzaSize).Include(x => x.PizzaType)
+                .Where(p => p.IsActive).ToListAsync();
+        }
+
         public async Task<Pizza> GetPizzaById(int id)
         {
             return await _dbContext.Pizzas.SingleOrDefaultAsync(x => x.Id == id);

@@ -23,6 +23,12 @@ namespace PizzaApp.Services.Servicess.Implementations
             return _mapper.Map<IEnumerable<PizzaDto>>(pizzas);
         }
 
+        public IEnumerable<PizzaDto> GetAllActivePizzas()
+        {
+            var pizzas = _pizzaRepositroy.GetAllActivePizzas().Result;
+            return _mapper.Map<IEnumerable<PizzaDto>>(pizzas);
+        }
+
         public IEnumerable<PizzaSizeDto> GetAllPizzaSizes()
         {
             var pizzaSizes = _pizzaRepositroy.GetAllPizzas().Result
